@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body,
+  #app {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #2c2c2c;
+  }
+
+  body {
+    color: #eeeeee;
+  }
+}
+
+@layer components {
+  .dss-header {
+    background-image: url("../assets/navbar-header-bg.png");
+    background-size: 80px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat;
+  }
+
+  .dss-sidebar {
+    @apply flex flex-col;
+    background: #959494;
+    width: 320px;
+    min-width: 320px;
+    border-right: 1px solid #555;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #666 #4a4a4a;
+  }
+
+  .dss-sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .dss-sidebar::-webkit-scrollbar-track {
+    background: #4a4a4a;
+  }
+  .dss-sidebar::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 2px;
+  }
+
+  .dss-sidebar-section {
+    @apply px-4 py-3;
+    border-bottom: 1px solid #fbfbfb;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    transition: background 0.15s;
+    color: #2c2c2c;
+  }
+  .dss-sidebar-section:hover {
+    background: #555;
+  }
+
+  .dss-sidebar-title {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #eeeeee;
+    font-size: 28px;
+  }
+
+  .dss-layer-item {
+    @apply px-4 py-2 flex items-center gap-3;
+    border-bottom: 1px solid #585858;
+    font-size: 0.85rem;
+    color: #2c2c2c;
+  }
+
+  .dss-layer-label {
+    @apply flex items-center gap-2;
+    cursor: pointer;
+  }
+
+  .dss-layers-panel {
+    background: #959494;
+    border-top: 2px solid #555;
+  }
+
+  .dss-layers-header {
+    @apply px-4 py-2;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #cacaca;
+    border-bottom: 1px solid #555;
+  }
+
+  .dss-popup {
+    @apply absolute shadow-2xl p-5;
+    background: rgba(74, 74, 74, 0.481);
+    z-index: 1000;
+    min-width: 280px;
+    max-width: 340px;
+    top: 190px;
+    right: 16px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+  }
+
+  .dss-popup-title {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 4px;
+    color: #ffffff;
+  }
+
+  .dss-popup-subtitle {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .dss-btn {
+    @apply px-3 py-1.5 rounded text-sm font-medium transition-all;
+    background: #555;
+    border: 1px solid #666;
+    color: #eee;
+  }
+  .dss-btn:hover {
+    background: #666;
+  }
+  .dss-btn-primary {
+    background: #f39c12;
+    border-color: #e67e22;
+    color: #1a1a1a;
+  }
+  .dss-btn-primary:hover {
+    background: #e67e22;
+  }
+
+  .legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  /* Map coordinate display */
+  .map-coords {
+    @apply absolute bottom-2 right-4;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: #666;
+    z-index: 100;
+  }
+
+  /* Search input */
+  .dss-search {
+    @apply w-full pl-8 pr-8 py-1.5 rounded text-sm;
+    background: #fff;
+    color: #333;
+    border: 1px solid #000000;
+    outline: none;
+    font-family: "Barlow", sans-serif;
+  }
+  .dss-search:focus {
+    border-color: #f39c12;
+  }
+
+  /* Compass rose */
+  .compass {
+    @apply absolute top-4 right-4;
+    width: 50px;
+    height: 50px;
+    z-index: 100;
+  }
+}
+
+/* Transition animations */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.2s ease;
+}
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
+@media (min-width: 1024px) {
+  .dss-popup {
+    top: 16px;
+    left: 16px;
+  }
+}
