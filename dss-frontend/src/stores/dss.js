@@ -72,7 +72,7 @@ export const useDSSStore = defineStore("dss", () => {
     { key: "machineRecommendation", label: "Machine Recommendation" },
   ]);
 
-  // ── Data loaders ───────────────────────────────────────────────
+  // Data loaders 
   async function loadMechanizationData() {
     if (mechanizationData.value.length > 0) return;
     try {
@@ -112,7 +112,7 @@ export const useDSSStore = defineStore("dss", () => {
     }
   }
 
-  // ── Actions ────────────────────────────────────────────────────
+  // Actions
   function setActiveModule(module) {
     if (activeModule.value !== module) {
       // Only reset when actually switching modules
@@ -125,9 +125,9 @@ export const useDSSStore = defineStore("dss", () => {
   }
 
   function toggleLayer(key) {
-    // These are always-on base layers — never auto-disable them
+    // These are always on base layers, never auto-disable them
     const baseLayers = ["municipalBoundary", "barangayBoundary", "roadNetwork"];
-    // Data layers — only one active at a time per module
+    // Data layers are only one active at a time per module
     const suitDataKeys = [
       "roadProximity",
       "waterUse",
@@ -144,7 +144,7 @@ export const useDSSStore = defineStore("dss", () => {
     const mechDataKeys = ["mechanizationLevel", "horsepower", "lguServiceArea"];
 
     if (!layers.value[key]) {
-      // Turning ON — turn off sibling data layers (not base layers)
+      // Turning ON, turn off sibling data layers (not base layers)
       if (suitDataKeys.includes(key))
         suitDataKeys.forEach((k) => {
           if (k !== key) layers.value[k] = false;
